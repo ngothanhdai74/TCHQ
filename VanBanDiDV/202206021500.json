@@ -1144,6 +1144,44 @@
 								2
 							],
 							"Steps": []
+						},
+						{
+							"ID": 2,
+							"WorkflowID": null,
+							"VersionID": 0,
+							"ActivityID": 0,
+							"Name": "Chuyển Lãnh đạo phòng",
+							"Description": null,
+							"FinishTask": true,
+							"TransactionID": 14,
+							"CollectInfos": [
+								{
+									"PropName": "Comment",
+									"PropTitle": "Ý kiến xử lý",
+									"DataType": 2,
+									"Value": null,
+									"SeqNo": 0,
+									"Required": false,
+									"Multiple": false,
+									"CollectInAction": false,
+									"Group": null
+								},
+								{
+									"PropName": "TrinhLD",
+									"PropTitle": "Trình Lãnh đạo",
+									"DataType": 0,
+									"Value": null,
+									"SeqNo": 0,
+									"Required": true,
+									"Multiple": false,
+									"CollectInAction": false,
+									"Group": null
+								}
+							],
+							"Roles": [
+								2
+							],
+							"Steps": []
 						}
 					]
 				},
@@ -1160,8 +1198,7 @@
 					"RefuseType": 0,
 					"CheckExists": false,
 					"Roles": [
-						1,
-						2
+						1
 					],
 					"Actions": [
 						{
@@ -1199,44 +1236,6 @@
 							],
 							"Roles": [
 								1
-							],
-							"Steps": []
-						},
-						{
-							"ID": 1,
-							"WorkflowID": null,
-							"VersionID": 0,
-							"ActivityID": 0,
-							"Name": "Chuyển Xl",
-							"Description": null,
-							"FinishTask": true,
-							"TransactionID": 14,
-							"CollectInfos": [
-								{
-									"PropName": "Comment",
-									"PropTitle": "Ý kiến xử lý",
-									"DataType": 2,
-									"Value": null,
-									"SeqNo": 0,
-									"Required": false,
-									"Multiple": false,
-									"CollectInAction": false,
-									"Group": null
-								},
-								{
-									"PropName": "TrinhLD",
-									"PropTitle": "Trình Lãnh đạo",
-									"DataType": 0,
-									"Value": null,
-									"SeqNo": 0,
-									"Required": true,
-									"Multiple": false,
-									"CollectInAction": false,
-									"Group": null
-								}
-							],
-							"Roles": [
-								2
 							],
 							"Steps": []
 						}
@@ -1400,10 +1399,10 @@
 					"ID": 14,
 					"WorkflowID": null,
 					"VersionID": 0,
-					"Name": "Chuyển XL",
+					"Name": "Chuyển LĐ Phòng",
 					"Description": null,
-					"FromActivityID": 8,
-					"ToActivityID": 8,
+					"FromActivityID": 7,
+					"ToActivityID": 7,
 					"AllowRecall": false
 				}
 			]
