@@ -1,0 +1,322 @@
+{
+	"ID": "VanBanDiTongCuc_DI_TCT",
+	"Name": "VanBanDiTongCuc_DI_TCT",
+	"Title": "Văn bản đi Tổng cục xin số Bộ",
+	"Description": "Quy trình xử lý Văn bản đi Tổng cục xin số Bộ",
+	"Version": 1,
+	"MaxVersion": 1,
+	"Status": 1,
+	"OrgCode": "",
+	"OrgPath": "\\",
+	"Versions": [
+		{
+			"ID": 1,
+			"WorkflowID": null,
+			"Version": 1,
+			"IsActive": true,
+			"Description": "Init Version",
+			"Duration": 7,
+			"DurationUnit": 0,
+			"Variables": [],
+			"Formulas": [],
+			"States": [
+				{
+					"ID": 1,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Khởi tạo",
+					"Description": null,
+					"Percent": 0
+				},
+				{
+					"ID": 2,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Chuyển văn thư Bộ",
+					"Description": null,
+					"Percent": 0
+				}
+			],
+			"Roles": [
+				{
+					"ID": 1,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Văn thư Tổng cục",
+					"Description": null,
+					"SeqNo": 0
+				},
+				{
+					"ID": 2,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Văn thư Bộ",
+					"Description": null,
+					"SeqNo": 0
+				}
+			],
+			"Activities": [
+				{
+					"ID": 1,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Khởi tạo",
+					"Type": 0,
+					"Description": null,
+					"IsChild": false,
+					"ChildWorkflowID": null,
+					"IsWorkQueue": true,
+					"QueueType": 2,
+					"AllowRefuse": true,
+					"RefuseType": 2,
+					"DefaultRole": 1,
+					"Roles": [
+						1
+					],
+					"Actions": [
+						{
+							"ID": 888,
+							"WorkflowID": null,
+							"VersionID": 0,
+							"ActivityID": 0,
+							"Name": "Khởi tạo văn bản",
+							"Description": "Khởi tạo văn bản",
+							"FinishTask": false,
+							"TransactionID": null,
+							"CollectInfos": null,
+							"Roles": [
+								1
+							],
+							"Steps": [
+								{
+									"ID": 0,
+									"SeqNo": 99,
+									"Type": 8,
+									"Action": {
+										"ItemType": 5,
+										"Props": [
+											{
+												"Code": "QueueName",
+												"Value": "const:CMC.TS.EDOC.MSG.OUTBOX.TASK"
+											},
+											{
+												"Code": "State",
+												"Value": "const:0"
+											},
+											{
+												"Code": "Organ",
+												"Value": "var:Org"
+											},
+											{
+												"Code": "Staff",
+												"Value": "var:Roles"
+											},
+											{
+												"Code": "MsgType",
+												"Value": "const:0"
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"ID": 2,
+							"WorkflowID": null,
+							"VersionID": 0,
+							"ActivityID": 0,
+							"Name": "Chuyển văn thư Bộ",
+							"AutoFoward": true,
+							"Description": null,
+							"FinishTask": false,
+							"TransactionID": 1,
+							"CollectInfos": [],
+							"Roles": [
+								1
+							],
+							"Steps": [
+								{
+									"ID": 0,
+									"SeqNo": 0,
+									"Type": 13,
+									"Action": {
+										"Mode": 0,
+										"Props": [
+											{
+												"Code": "State",
+												"Value": "18"
+											}
+										]
+									}
+								},
+								{
+									"ID": 0,
+									"SeqNo": 0,
+									"Type": 9,
+									"Action": {
+										"IsCurrent": true,
+										"Props": [
+											{
+												"Code": "State",
+												"Value": "18"
+											}
+										]
+									}
+								},
+								{
+									"ID": 0,
+									"SeqNo": 0,
+									"Type": 8,
+									"Action": {
+										"ItemType": 5,
+										"Props": [
+											{
+												"Code": "QueueName",
+												"Value": "const:CMC.TS.EDOC.MSG.OUTBOX.DOC"
+											},
+											{
+												"Code": "Organ",
+												"Value": "var:Org"
+											},
+											{
+												"Code": "Staff",
+												"Value": "var:Roles"
+											},
+											{
+												"Code": "MsgType",
+												"Value": "const:0"
+											},
+											{
+												"Code": "DocType",
+												"Value": "const:4"
+											}
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"ID": 2,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Văn thư Bộ",
+					"Type": 1,
+					"Description": null,
+					"IsChild": true,
+					"ChildWorkflowID": "VBDenDV",
+					"AllowRefuse": false,
+					"RefuseType": 0,
+					"Roles": [
+						2
+					],
+					"Actions": [
+						{
+							"ID": 998,
+							"WorkflowID": "VBDenDV",
+							"VersionID": 1,
+							"ActivityID": 2,
+							"Type": 1,
+							"Name": "Kết thúc",
+							"Description": "Kết thúc",
+							"FinishTask": true,
+							"TransactionID": 2,
+							"CollectInfos": [
+								{
+									"PropName": "Comment",
+									"PropTitle": "Ý kiến xử lý",
+									"DataType": 0,
+									"Value": null,
+									"SeqNo": 0,
+									"Required": false,
+									"Multiple": false,
+									"CollectInAction": false,
+									"Group": null
+								}
+							],
+							"Roles": [
+								2
+							],
+							"Steps": [
+								{
+									"ID": 0,
+									"SeqNo": 0,
+									"Type": 9,
+									"Action": {
+										"IsCurrent": true,
+										"Props": [
+											{
+												"Code": "State",
+												"Value": "6"
+											}
+										]
+									}
+								},
+								{
+									"ID": 0,
+									"SeqNo": 0,
+									"Type": 13,
+									"Action": {
+										"Mode": 0,
+										"Props": [
+											{
+												"Code": "State",
+												"Value": "2"
+											},
+											{
+												"Code": "Status",
+												"Value": "2"
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"InputMappings": [],
+					"OutputMappings": []
+				},
+				{
+					"ID": 3,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Kết thúc",
+					"Type": 2,
+					"Description": null,
+					"IsChild": false,
+					"ChildWorkflowID": null,
+					"AllowRefuse": false,
+					"RefuseType": 0,
+					"Roles": [
+						1,
+						2
+					],
+					"Actions": []
+				}
+			],
+			"Transactions": [
+				{
+					"ID": 1,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Chuyển văn thư Bộ",
+					"Description": null,
+					"FromActivityID": 1,
+					"ToActivityID": 2,
+					"AllowRecall": false
+				},
+				{
+					"ID": 2,
+					"WorkflowID": null,
+					"VersionID": 0,
+					"Name": "Kết thúc",
+					"Description": null,
+					"FromActivityID": 2,
+					"ToActivityID": 3,
+					"AllowRecall": false
+				}
+			]
+		}
+	]
+}
